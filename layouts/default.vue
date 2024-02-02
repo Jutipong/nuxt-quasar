@@ -32,8 +32,8 @@ const logout = () => {
 
             <q-space />
 
-            <q-btn class="hover:bg-red-600" align="around" :label="$q.screen.gt.sm ? 'Logout' : ''" flat icon="logout"
-              @click="logout()"></q-btn>
+            <q-btn color="negative" class="hover:bg-red-600" align="around" :label="$q.screen.gt.sm ? 'Logout' : ''" flat
+              icon="logout" @click="logout()"></q-btn>
           </q-toolbar>
 
 
