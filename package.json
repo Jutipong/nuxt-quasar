@@ -7,9 +7,14 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.6.3",
+    "eslint": "^8.56.0",
+    "eslint-plugin-format": "^0.1.0",
     "nuxt": "^3.10.0",
     "nuxt-mdi": "^1.1.6",
     "vue": "^3.4.15",
@@ -19,6 +24,7 @@
     "@pinia/nuxt": "^0.5.1",
     "@quasar/extras": "^1.16.9",
     "nuxt-quasar-ui": "^2.0.7",
-    "quasar": "^2.14.3"
+    "quasar": "^2.14.3",
+    "typescript": "^5.3.3"
   }
 }

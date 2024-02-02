@@ -1,45 +1,70 @@
+<script setup lang="ts">
+definePageMeta({ layout: 'empty' })
+const $q = useQuasar()
+const $router = useRouter()
+const store = useLoginStore()
+function login() {
+  store.toggleLoading()
+  const lt = setTimeout(() => {
+    $router.push('/').then(() => {
+      clearTimeout(lt)
+      store.toggleLoading()
+      store.$reset()
+    })
+  }, Math.random() * 4000)
+}
+</script>
+
 <template>
   <div class="flex justify-center items-center q-electron-drag" style="height: 100%">
     <div class="row base-card-shadow electron-hide" style="width: 60vw; min-width: 300px">
-      <div class="col-6 flex justify-center items-center" v-show="$q.screen.gt.sm">
-        <q-img width="100%" height="100%"
-          src="https://images.unsplash.com/photo-1654097512267-9281e2f76e8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80">
-        </q-img>
+      <div v-show="$q.screen.gt.sm" class="col-6 flex justify-center items-center">
+        <q-img
+          width="100%" height="100%"
+          src="https://images.unsplash.com/photo-1654097512267-9281e2f76e8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+        />
       </div>
-      <q-separator vertical inset v-if="$q.screen.gt.sm" />
+      <q-separator v-if="$q.screen.gt.sm" vertical inset />
       <div class="col flex justify-center items-center">
-        <q-form @submit="login" :greedy="true">
+        <q-form :greedy="true" @submit="login">
           <q-card square style="min-width: 290px; height: 100%; width: 60%" class="no-shadow">
             <q-card-section class="text-center">
-              <h3 class="text-uppercase">Login</h3>
+              <h3 class="text-uppercase">
+                Login
+              </h3>
               <!-- User -->
-              <q-input autofocus bottom-slots label="User" v-model="store.User.UserName" :rules="[(val) => !!val || '']">
+              <q-input v-model="store.User.UserName" autofocus bottom-slots label="User" :rules="[(val) => !!val || '']">
                 <!-- :attributes="{ tabindex: '0' }" -->
-                <template v-slot:prepend>
+                <template #prepend>
                   <q-icon name="mdi-account" />
                 </template>
               </q-input>
               <!-- Password -->
-              <q-input bottom-slots hint="" v-model="store.User.Password" label="Password"
-                :type="store.Option.ShowPassword ? 'text' : 'password'" :rules="[(val) => !!val || '']">
+              <q-input
+                v-model="store.User.Password" bottom-slots hint="" label="Password"
+                :type="store.Option.ShowPassword ? 'text' : 'password'" :rules="[(val) => !!val || '']"
+              >
                 <!-- :attributes="{ tabindex: '1' }" -->
-                <template v-slot:prepend>
+                <template #prepend>
                   <q-icon name="mdi-lock" />
                 </template>
-                <template v-slot:append>
-                  <q-icon :name="!store.Option.ShowPassword ? 'visibility_off' : 'visibility'" class="cursor-pointer"
-                    @click="store.Option.ShowPassword = !store.Option.ShowPassword" />
+                <template #append>
+                  <q-icon
+                    :name="!store.Option.ShowPassword ? 'visibility_off' : 'visibility'" class="cursor-pointer"
+                    @click="store.Option.ShowPassword = !store.Option.ShowPassword"
+                  />
                 </template>
               </q-input>
 
               <!-- button login -->
-              <q-btn :loading="store.Option.Loading" class="logon-btn bg-logon-card-input" text-color="white"
-                label="Login" style="font-size: large" type="submit">
-              </q-btn>
+              <q-btn
+                :loading="store.Option.Loading" class="logon-btn bg-logon-card-input" text-color="white"
+                label="Login" style="font-size: large" type="submit"
+              />
               <p class="text-grey q-mt-lg">
                 Developed with
-                <q-icon size="sm" name="las la-heartbeat" color="pink" class="q-mr-sm q-ml-sm"></q-icon>+
-                <q-icon size="sm" name="lab la-vuejs" color="green" class="q-mr-sm"></q-icon>
+                <q-icon size="sm" name="las la-heartbeat" color="pink" class="q-mr-sm q-ml-sm" />+
+                <q-icon size="sm" name="lab la-vuejs" color="green" class="q-mr-sm" />
               </p>
             </q-card-section>
           </q-card>
@@ -48,23 +73,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-definePageMeta({ layout: 'empty' })
-const $q = useQuasar();
-const $router = useRouter();
-const store = useLoginStore();
-const login = () => {
-  store.toggleLoading();
-  const lt = setTimeout(() => {
-    $router.push('/').then(() => {
-      clearTimeout(lt);
-      store.toggleLoading();
-      store.$reset();
-    });
-  }, Math.random() * 4000);
-};
-</script>
 
 <style scoped>
 .base-card-shadow {
