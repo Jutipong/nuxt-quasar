@@ -16,7 +16,7 @@
               <q-input autofocus bottom-slots label="User" v-model="store.User.UserName" :rules="[(val) => !!val || '']">
                 <!-- :attributes="{ tabindex: '0' }" -->
                 <template v-slot:prepend>
-                  <q-icon name="account_circle" />
+                  <q-icon name="mdi-account" />
                 </template>
               </q-input>
               <!-- Password -->
@@ -24,7 +24,7 @@
                 :type="store.Option.ShowPassword ? 'text' : 'password'" :rules="[(val) => !!val || '']">
                 <!-- :attributes="{ tabindex: '1' }" -->
                 <template v-slot:prepend>
-                  <q-icon name="vpn_key" />
+                  <q-icon name="mdi-lock" />
                 </template>
                 <template v-slot:append>
                   <q-icon :name="!store.Option.ShowPassword ? 'visibility_off' : 'visibility'" class="cursor-pointer"
