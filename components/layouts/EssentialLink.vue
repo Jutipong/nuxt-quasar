@@ -12,7 +12,7 @@ const { title, caption, icon, link, level, children } = defineProps({
 <template>
   <div>
     <div v-if="children?.length === 0">
-      <q-item v-ripple dense clickable :to="link" :inset-level="level">
+      <q-item v-ripple clickable :to="link" :inset-level="level">
         <q-item-section avatar>
           <q-icon :name="icon" />
         </q-item-section>
@@ -25,7 +25,6 @@ const { title, caption, icon, link, level, children } = defineProps({
       <div v-if="children?.length > 0">
         <!-- {{children}} -->
         <q-expansion-item
-          dense
           expand-separator
           :icon="icon"
           :label="title"
@@ -36,12 +35,13 @@ const { title, caption, icon, link, level, children } = defineProps({
         </q-expansion-item>
       </div>
       <div v-else>
-        <q-item v-ripple dense clickable :to="link" :inset-level="level">
+        <q-item v-ripple clickable :to="link" :inset-level="level">
           <q-item-section avatar>
             <q-icon :name="icon" />
           </q-item-section>
           <q-item-section>{{ title }}</q-item-section>
         </q-item>
+        <q-separator :key="`sep${title}-${icon}`" />
       </div>
     </div>
   </div>

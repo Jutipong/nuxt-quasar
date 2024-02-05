@@ -24,7 +24,7 @@ const menuList = [
   },
   {
     title: 'Product',
-    icon: 'mdi-code',
+    // icon: 'mdi-code-tags-check',
     level: 0,
     children: [{
       title: 'Product 1',
@@ -35,7 +35,7 @@ const menuList = [
   },
   {
     title: 'Group 2',
-    icon: 'mdi-record_voice_over',
+    // icon: 'mdi-lifebuoy',
     level: 0,
     children: [{
       title: 'Setting',
