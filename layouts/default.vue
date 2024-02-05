@@ -129,7 +129,7 @@ function logout() {
         >
           <q-scroll-area class="fit">
             <q-list>
-              <LayoutsEssentialLink v-for="link in menuList" :key="link.title" v-bind="link" />
+              <LayoutsDrawer v-for="link in menuList" :key="link.title" v-bind="link" />
             </q-list>
           </q-scroll-area>
         </q-drawer>

@@ -29,7 +29,7 @@ const group = ref()
           :label="title"
           :header-inset-level="level"
         >
-          <LayoutsEssentialLink
+          <LayoutsDrawer
             v-for="child in sub"
             :key="child.title + child.icon + child.level"
             v-bind="child"
