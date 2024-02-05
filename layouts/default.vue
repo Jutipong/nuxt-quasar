@@ -10,7 +10,11 @@ const icon = computed(() => leftDrawerOpen.value ? 'mdi-menu-open' : 'mdi-menu-c
 
 function logout() {
   $q.dialog({
-    title: 'Logout',
+    html: true,
+    title: `<div class="text-negative">
+              <i class="mdi mdi-logout"></i>
+                Logout!
+            </div>`,
     color: 'negative',
     message: 'Are you sure you want to logout?',
     cancel: true,
