@@ -1,103 +1,103 @@
 {
-    "cSpell.words": [
-        "Nuxt",
-        "vuejs"
-    ],
-    "[jsonc]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  "cSpell.words": [
+    "Nuxt",
+    "vuejs"
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  // -----------------------------------
+  // ---------- ESlint Config ----------
+  // -----------------------------------
+  // Enable the ESlint flat config support
+  "eslint.experimental.useFlatConfig": true,
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+  "editor.formatOnSave": true,
+  // Auto fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+  // Silent the stylistic rules in you IDE, but still auto fix them
+  "eslint.rules.customizations": [
+    {
+      "rule": "style/*",
+      "severity": "off"
     },
-    "[vue]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    {
+      "rule": "format/*",
+      "severity": "off"
     },
-    "[typescript]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    {
+      "rule": "*-indent",
+      "severity": "off"
     },
-    "[json]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    {
+      "rule": "*-spacing",
+      "severity": "off"
     },
-    "[javascript]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    {
+      "rule": "*-spaces",
+      "severity": "off"
     },
-    // -----------------------------------
-    // ---------- ESlint Config ----------
-    // -----------------------------------
-    // Enable the ESlint flat config support
-    "eslint.experimental.useFlatConfig": true,
-    // Disable the default formatter, use eslint instead
-    "prettier.enable": false,
-    "editor.formatOnSave": true,
-    // Auto fix
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit",
-        "source.organizeImports": "never"
+    {
+      "rule": "*-order",
+      "severity": "off"
     },
-    // Silent the stylistic rules in you IDE, but still auto fix them
-    "eslint.rules.customizations": [
-        {
-            "rule": "style/*",
-            "severity": "off"
-        },
-        {
-            "rule": "format/*",
-            "severity": "off"
-        },
-        {
-            "rule": "*-indent",
-            "severity": "off"
-        },
-        {
-            "rule": "*-spacing",
-            "severity": "off"
-        },
-        {
-            "rule": "*-spaces",
-            "severity": "off"
-        },
-        {
-            "rule": "*-order",
-            "severity": "off"
-        },
-        {
-            "rule": "*-dangle",
-            "severity": "off"
-        },
-        {
-            "rule": "*-newline",
-            "severity": "off"
-        },
-        {
-            "rule": "*quotes",
-            "severity": "off"
-        },
-        {
-            "rule": "*semi",
-            "severity": "off"
-        }
-    ],
-    // Enable eslint for all supported languages
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "vue",
-        "html",
-        "markdown",
-        "json",
-        "jsonc",
-        "yaml",
-        "toml"
-    ],
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "**/node_modules": true
+    {
+      "rule": "*-dangle",
+      "severity": "off"
+    },
+    {
+      "rule": "*-newline",
+      "severity": "off"
+    },
+    {
+      "rule": "*quotes",
+      "severity": "off"
+    },
+    {
+      "rule": "*semi",
+      "severity": "off"
     }
-    // -----------------------------------
-    // -------- End ESlint Config --------
-    // -----------------------------------
+  ],
+  // Enable eslint for all supported languages
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "toml"
+  ],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true
+  }
+  // -----------------------------------
+  // -------- End ESlint Config --------
+  // -----------------------------------
 }

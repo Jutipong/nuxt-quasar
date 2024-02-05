@@ -116,6 +116,7 @@ function logout() {
 
         <q-drawer
           v-model="isDrawerOpen"
+          :width="270"
           show-if-above
           bordered
           :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
@@ -128,7 +129,9 @@ function logout() {
         </q-drawer>
 
         <q-page-container>
-          <slot />
+          <q-page padding>
+            <slot />
+          </q-page>
         </q-page-container>
       </q-layout>
     </Teleport>
