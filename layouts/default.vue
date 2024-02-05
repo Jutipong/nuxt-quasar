@@ -1,13 +1,10 @@
 <script setup lang="ts">
 const $q = useQuasar()
 const isDrawerOpen = ref(true)
-const route = useRouter()
 
 function toggleLeftDrawer() {
   isDrawerOpen.value = !isDrawerOpen.value
 }
-
-const isActive = ref('')
 
 const menuList = [
   {
