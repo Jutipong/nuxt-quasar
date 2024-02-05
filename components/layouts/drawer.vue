@@ -48,11 +48,3 @@ const group = ref()
     </div>
   </div>
 </template>
-
-<!-- <style scoped>
-.q-expansion-item--expanded {
-  border: 1px solid #000000;
-  border-color: cyan;
-  background-color: cyan;
-}
-</style> -->

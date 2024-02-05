@@ -1,4 +1,4 @@
-export const useLoginStore = defineStore('loginStore', {
+export default defineStore('loginStore', {
   state: () => ({
     User: {
       UserName: 'admin',

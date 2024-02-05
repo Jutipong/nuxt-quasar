@@ -143,3 +143,43 @@ function logout() {
     </Teleport>
   </ClientOnly>
 </template>
+
+<style>
+.q-list a {
+  padding-left: 16px;
+  margin: 10px;
+}
+
+.q-item {
+  border-radius: 5px;
+  min-height: 40px !important;
+}
+
+.q-item.q-router-link--active,
+.q-item--active {
+  background: linear-gradient(
+    72.47deg,
+    #1976d2 22.16%,
+    rgba(85, 132, 241, 0.7) 76.47%
+  ) !important;
+  box-shadow: 0 2px 6px #7367f07a;
+  color: #fff !important;
+}
+/*
+.shadow_custom {
+  box-shadow: 0 2px 6px #4359711f !important;
+}
+
+.drawer_cls {
+  background-color: #fff !important;
+  color: #697a8d !important;
+}
+
+.expantion_bg {
+  background-color: #373b51 !important;
+}
+
+.quasar_color {
+  color: #566a7f;
+} */
+</style>
