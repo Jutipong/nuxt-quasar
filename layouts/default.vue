@@ -53,26 +53,32 @@ function logout() {
       <q-layout view="hhh LpR fFf">
         <q-header reveal class="bg-primary text-white">
           <q-toolbar>
-            <q-btn dense flat round :icon="iconDrawerOpen" @click="toggleLeftDrawer" />
+            <q-btn
+              dense flat round
+              :icon="iconDrawerOpen"
+              @click="toggleLeftDrawer()"
+            />
 
             <q-toolbar-title>
               <q-avatar>
                 <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
               </q-avatar>
-              Title : {{ isActive }} || {{ isDrawerOpen }}
+              Title : {{ isActive }} || {{ route.currentRoute.value.path }}
             </q-toolbar-title>
 
             <q-space />
 
             <q-btn
-              color="negative" class="hover:bg-red-600" align="around" :label="$q.screen.gt.sm ? 'Logout' : ''" flat
-              icon="mdi-logout" @click="logout()"
+              color="negative"
+              class="hover:bg-red-600"
+              align="around"
+              :label="$q.screen.gt.sm ? 'Logout' : ''" flat
+              icon="mdi-logout"
+              @click="logout()"
             />
           </q-toolbar>
         </q-header>
 
-        <!-- <q-drawer v-model="leftDrawerOpen" show-if-above side="left" bordered>
-        </q-drawer> -->
         <q-drawer
           v-model="isDrawerOpen"
           show-if-above
@@ -82,7 +88,7 @@ function logout() {
           <q-scroll-area class="fit">
             <q-list>
               <template v-for="(menuItem, index) in menuList" :key="index">
-                <q-item v-ripple :to="menuItem.to" :active="menuItem.label === route.currentRoute.value.path">
+                <q-item v-ripple :to="menuItem.to" :active="menuItem.to === route.currentRoute.value.path">
                   <q-item-section avatar>
                     <q-icon :name="`mdi-${menuItem.icon}`" />
                   </q-item-section>
@@ -97,7 +103,6 @@ function logout() {
         </q-drawer>
 
         <q-page-container>
-          <!-- <router-view /> -->
           <slot />
         </q-page-container>
       </q-layout>
