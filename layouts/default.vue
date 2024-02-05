@@ -6,6 +6,8 @@ function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
 
+const icon = computed(() => leftDrawerOpen.value ? 'mdi-menu-open' : 'mdi-menu-close')
+
 function logout() {
   navigateTo('/login')
 }
@@ -17,7 +19,7 @@ function logout() {
       <q-layout view="hhh LpR fFf">
         <q-header reveal class="bg-primary text-white">
           <q-toolbar>
-            <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+            <q-btn dense flat round :icon="icon" @click="toggleLeftDrawer" />
 
             <q-toolbar-title>
               <q-avatar>
