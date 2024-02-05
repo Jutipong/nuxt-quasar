@@ -7,6 +7,8 @@ const { title, caption, icon, link, level, children } = defineProps({
   level: Number,
   children: Array,
 })
+
+const group = ref()
 </script>
 
 <template>
@@ -25,6 +27,8 @@ const { title, caption, icon, link, level, children } = defineProps({
       <div v-if="children?.length > 0">
         <!-- {{children}} -->
         <q-expansion-item
+          v-model="group"
+          :group="link"
           expand-separator
           :icon="icon"
           :label="title"
@@ -41,8 +45,16 @@ const { title, caption, icon, link, level, children } = defineProps({
           </q-item-section>
           <q-item-section>{{ title }}</q-item-section>
         </q-item>
-        <q-separator :key="`sep${title}-${icon}`" />
+        <!-- <q-separator :key="`sep${title}-${icon}`" /> -->
       </div>
     </div>
   </div>
 </template>
+
+<!-- <style scoped>
+.q-expansion-item--expanded {
+  border: 1px solid #000000;
+  border-color: cyan;
+  background-color: cyan;
+}
+</style> -->

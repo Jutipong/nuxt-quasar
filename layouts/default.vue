@@ -23,6 +23,25 @@ const menuList = [
     link: '/outbox',
   },
   {
+    title: 'Setting',
+    icon: 'mdi-cogs',
+    level: 0,
+    children: [
+      {
+        title: 'App',
+        icon: 'mdi-cog',
+        link: '/setting/app',
+        level: 0.2,
+      },
+      {
+        title: 'Logger',
+        icon: 'mdi-gate-xor',
+        link: '/setting/log',
+        level: 0.2,
+      },
+    ],
+  },
+  {
     title: 'Product',
     // icon: 'mdi-code-tags-check',
     level: 0,
@@ -38,9 +57,9 @@ const menuList = [
     // icon: 'mdi-lifebuoy',
     level: 0,
     children: [{
-      title: 'Setting',
+      title: 'Config',
       icon: 'mdi-school',
-      link: 'setting',
+      link: '/config',
       level: 0.2,
     }],
   },
