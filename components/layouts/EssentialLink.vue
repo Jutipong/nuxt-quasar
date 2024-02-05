@@ -1,19 +1,14 @@
 <script setup lang="ts">
-const { title, caption, icon, link, level, children } = defineProps({
-  title: String,
-  caption: String,
-  icon: String,
-  link: String,
-  level: Number,
-  children: Array,
-})
+import type { Menu } from '~/layouts/default.vue'
+
+const { title, icon, link, level, sub } = defineProps<Menu>()
 
 const group = ref()
 </script>
 
 <template>
   <div>
-    <div v-if="children?.length === 0">
+    <div v-if="sub?.length === 0">
       <q-item v-ripple clickable :to="link" :inset-level="level">
         <q-item-section avatar>
           <q-icon :name="icon" />
@@ -24,7 +19,7 @@ const group = ref()
       </q-item>
     </div>
     <div v-else>
-      <div v-if="children?.length > 0">
+      <div v-if="sub && sub?.length > 0">
         <!-- {{children}} -->
         <q-expansion-item
           v-model="group"
@@ -32,10 +27,13 @@ const group = ref()
           expand-separator
           :icon="icon"
           :label="title"
-          :caption="caption"
           :header-inset-level="level"
         >
-          <LayoutsEssentialLink v-for="child in children" :key="child" v-bind="child" />
+          <LayoutsEssentialLink
+            v-for="child in sub"
+            :key="child.title + child.icon + child.level"
+            v-bind="child"
+          />
         </q-expansion-item>
       </div>
       <div v-else>

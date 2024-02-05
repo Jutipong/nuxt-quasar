@@ -1,12 +1,21 @@
 <script setup lang="ts">
 const $q = useQuasar()
+
+export interface Menu {
+  title: string
+  icon?: string
+  link?: string
+  level: 0 | 0.2
+  sub?: Menu[]
+}
+
 const isDrawerOpen = ref(true)
 
 function toggleLeftDrawer() {
   isDrawerOpen.value = !isDrawerOpen.value
 }
 
-const menuList = [
+const menuList: Menu[] = [
   {
     title: 'Home',
     icon: 'mdi-school',
@@ -23,7 +32,7 @@ const menuList = [
     title: 'Setting',
     icon: 'mdi-cogs',
     level: 0,
-    children: [
+    sub: [
       {
         title: 'App',
         icon: 'mdi-cog',
@@ -42,7 +51,7 @@ const menuList = [
     title: 'Product',
     // icon: 'mdi-code-tags-check',
     level: 0,
-    children: [{
+    sub: [{
       title: 'Product 1',
       icon: 'mdi-chart-ppf',
       link: '/product',
@@ -53,7 +62,7 @@ const menuList = [
     title: 'Group 2',
     // icon: 'mdi-lifebuoy',
     level: 0,
-    children: [{
+    sub: [{
       title: 'Config',
       icon: 'mdi-school',
       link: '/config',
