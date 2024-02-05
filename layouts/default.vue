@@ -9,7 +9,13 @@ function toggleLeftDrawer() {
 const icon = computed(() => leftDrawerOpen.value ? 'mdi-menu-open' : 'mdi-menu-close')
 
 function logout() {
-  navigateTo('/login')
+  $q.dialog({
+    title: 'Logout',
+    color: 'negative',
+    message: 'Are you sure you want to logout?',
+    cancel: true,
+    persistent: true,
+  }).onOk(() => navigateTo('/login'))
 }
 </script>
 

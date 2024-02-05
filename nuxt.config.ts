@@ -4,5 +4,6 @@ export default defineNuxtConfig({
   modules: ['nuxt-quasar-ui', '@pinia/nuxt'],
   quasar: {
     iconSet: 'mdi-v7',
+    plugins: ['Dialog'],
   },
 })
