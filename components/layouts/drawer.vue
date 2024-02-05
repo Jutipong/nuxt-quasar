@@ -48,3 +48,25 @@ const group = ref()
     </div>
   </div>
 </template>
+
+<style scoped>
+.q-list a {
+  margin: 8px;
+}
+
+.q-item {
+  border-radius: 6px;
+  min-height: 40px !important;
+}
+
+.q-item.q-router-link--active,
+.q-item--active {
+  background: linear-gradient(
+    72.47deg,
+    #1976d2 22.16%,
+    rgba(85, 132, 241, 0.7) 76.47%
+  ) !important;
+  box-shadow: 0 2px 6px #7367f07a;
+  color: #fff !important;
+}
+</style>
