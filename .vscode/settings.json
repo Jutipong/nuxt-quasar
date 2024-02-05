@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
-        "Nuxt"
+        "Nuxt",
+        "vuejs"
     ],
     "[jsonc]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"

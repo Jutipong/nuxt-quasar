@@ -2,17 +2,17 @@ export const useLoginStore = defineStore('loginStore', {
   state: () => ({
     User: {
       UserName: 'admin',
-      Password: '1234',
+      Password: '!@#$%^&*()_',
     },
     Option: {
-      Loading: false,
-      ShowPassword: false,
+      isLoading: false,
+      isShowPassword: false,
     },
   }),
   getters: {},
   actions: {
     toggleLoading() {
-      this.Option.Loading = !this.Option.Loading
+      this.Option.isLoading = !this.Option.isLoading
     },
   },
 })

@@ -1,83 +1,106 @@
 <script setup lang="ts">
 definePageMeta({ layout: 'empty' })
-const $q = useQuasar()
-const $router = useRouter()
+
+const route = useRouter()
 const store = useLoginStore()
+
 function login() {
   store.toggleLoading()
   const lt = setTimeout(() => {
-    $router.push('/').then(() => {
+    route.push('/').then(() => {
       clearTimeout(lt)
       store.toggleLoading()
       store.$reset()
     })
-  }, Math.random() * 4000)
+  }, Math.random() * 3000)
 }
 </script>
 
 <template>
-  <div class="flex justify-center items-center q-electron-drag" style="height: 100%">
-    <div class="row base-card-shadow electron-hide" style="width: 60vw; min-width: 300px">
-      <div v-show="$q.screen.gt.sm" class="col-6 flex justify-center items-center">
-        <q-img
-          width="100%" height="100%"
-          src="https://images.unsplash.com/photo-1654097512267-9281e2f76e8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-        />
-      </div>
-      <q-separator v-if="$q.screen.gt.sm" vertical inset />
-      <div class="col flex justify-center items-center">
-        <q-form :greedy="true" @submit="login">
-          <q-card square style="min-width: 290px; height: 100%; width: 60%" class="no-shadow">
-            <q-card-section class="text-center">
-              <h3 class="text-uppercase">
-                Login
-              </h3>
-              <!-- User -->
-              <q-input v-model="store.User.UserName" autofocus bottom-slots label="User" :rules="[(val) => !!val || '']">
-                <!-- :attributes="{ tabindex: '0' }" -->
-                <template #prepend>
-                  <q-icon name="mdi-account" />
-                </template>
-              </q-input>
-              <!-- Password -->
-              <q-input
-                v-model="store.User.Password" bottom-slots hint="" label="Password"
-                :type="store.Option.ShowPassword ? 'text' : 'password'" :rules="[(val) => !!val || '']"
-              >
-                <!-- :attributes="{ tabindex: '1' }" -->
-                <template #prepend>
-                  <q-icon name="mdi-lock" />
-                </template>
-                <template #append>
-                  <q-icon
-                    :name="!store.Option.ShowPassword ? 'visibility_off' : 'visibility'" class="cursor-pointer"
-                    @click="store.Option.ShowPassword = !store.Option.ShowPassword"
-                  />
-                </template>
-              </q-input>
+  <q-page class="row items-center">
+    <div class="q-pa-md full-width">
+      <div class="column">
+        <div class="col self-center">
+          <div class="row base-card-shadow">
+            <div class="col flex justify-center items-center pa-5">
+              <q-form :greedy="true" @submit="login">
+                <q-card square class="no-shadow">
+                  <q-card-section class="text-center">
+                    <!-- <h1 class="text-uppercase">
+                    <q-icon name="mdi-vuejs" />
+                  </h1> -->
 
-              <!-- button login -->
-              <q-btn
-                :loading="store.Option.Loading" class="logon-btn bg-logon-card-input" text-color="white"
-                label="Login" style="font-size: large" type="submit"
-              />
-              <p class="text-grey q-mt-lg">
-                Developed with
-                <q-icon size="sm" name="las la-heartbeat" color="pink" class="q-mr-sm q-ml-sm" />+
-                <q-icon size="sm" name="lab la-vuejs" color="green" class="q-mr-sm" />
-              </p>
-            </q-card-section>
-          </q-card>
-        </q-form>
+                    <q-icon
+                      style="margin: 16px;"
+                      size="120px"
+                      name="mdi-vuejs"
+                      color="green"
+                    />
+
+                    <q-input
+                      v-model="store.User.UserName"
+                      autofocus
+                      bottom-slots
+                      label="User" :rules="[(val) => !!val || '']"
+                    >
+                      <template #prepend>
+                        <q-icon name="mdi-account" />
+                      </template>
+                    </q-input>
+
+                    <q-input
+                      v-model="store.User.Password"
+                      label="Password"
+                      :type="store.Option.isShowPassword ? 'text' : 'password'"
+                      :rules="[(val) => !!val || '']"
+                    >
+                      <template #prepend>
+                        <q-icon name="mdi-lock" />
+                      </template>
+                      <template #append>
+                        <q-icon
+                          class="cursor-pointer"
+                          :name="!store.Option.isShowPassword ? 'mdi-eye-off-outline' : 'mdi-eye-outline'"
+                          @click="store.Option.isShowPassword = !store.Option.isShowPassword"
+                        />
+                      </template>
+                    </q-input>
+
+                    <q-btn
+                      type="submit"
+                      :loading="store.Option.isLoading"
+                      class="logon-btn bg-logon-card-input"
+                      text-color="white"
+                      style="font-size: medium"
+                      label="Login"
+                      icon="mdi-login"
+                    />
+
+                    <p class="text-grey q-mt-lg">
+                      Developed with
+                      <q-icon size="sm" name="mdi-vuejs" color="green" class="q-mr-sm q-ml-sm" />+
+                      <q-icon size="sm" name="mdi-heart-outline" color="pink" class="q-mr-sm" />
+                    </p>
+                  </q-card-section>
+                </q-card>
+              </q-form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </q-page>
 </template>
 
 <style scoped>
 .base-card-shadow {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 12px 0px;
   border-radius: 4px;
+  width: 30vw;
+}
+
+.q-form {
+  min-width: 80%;
 }
 
 .logon-btn {
