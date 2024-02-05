@@ -11,22 +11,38 @@ const isActive = ref('')
 
 const menuList = [
   {
-    icon: 'inbox',
-    label: 'Inbox',
-    to: '/',
-    separator: true,
+    title: 'Home',
+    icon: 'mdi-school',
+    link: '/',
+    level: 0,
   },
   {
-    icon: 'send',
-    label: 'Outbox',
-    to: '/outbox',
-    separator: false,
+    title: 'Outbox',
+    icon: 'mdi-archive',
+    level: 0,
+    link: '/outbox',
   },
   {
-    icon: 'settings',
-    label: 'Settings',
-    to: '/setting',
-    separator: false,
+    title: 'Product',
+    icon: 'mdi-code',
+    level: 0,
+    children: [{
+      title: 'Product 1',
+      icon: 'mdi-chart-ppf',
+      link: '/product',
+      level: 0.2,
+    }],
+  },
+  {
+    title: 'Group 2',
+    icon: 'mdi-record_voice_over',
+    level: 0,
+    children: [{
+      title: 'Setting',
+      icon: 'mdi-school',
+      link: 'setting',
+      level: 0.2,
+    }],
   },
 ]
 
@@ -87,17 +103,7 @@ function logout() {
         >
           <q-scroll-area class="fit">
             <q-list>
-              <template v-for="(menuItem, index) in menuList" :key="index">
-                <q-item v-ripple :to="menuItem.to" :active="menuItem.to === route.currentRoute.value.path">
-                  <q-item-section avatar>
-                    <q-icon :name="`mdi-${menuItem.icon}`" />
-                  </q-item-section>
-                  <q-item-section>
-                    {{ menuItem.label }}
-                  </q-item-section>
-                </q-item>
-                <q-separator v-if="menuItem.separator" :key="`sep${index}`" />
-              </template>
+              <LayoutsEssentialLink v-for="link in menuList" :key="link.title" v-bind="link" />
             </q-list>
           </q-scroll-area>
         </q-drawer>
