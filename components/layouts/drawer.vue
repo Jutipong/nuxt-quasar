@@ -29,11 +29,15 @@ const group = ref()
           :label="title"
           :header-inset-level="level"
         >
-          <LayoutsDrawer
-            v-for="child in sub"
-            :key="child.title + child.icon + child.level"
-            v-bind="child"
-          />
+          <q-card>
+            <q-card-section>
+              <LayoutsDrawer
+                v-for="child in sub"
+                :key="child.title + child.icon + child.level"
+                v-bind="child"
+              />
+            </q-card-section>
+          </q-card>
         </q-expansion-item>
       </div>
       <div v-else>
@@ -52,6 +56,10 @@ const group = ref()
 <style scoped>
 .q-list a {
   margin: 8px;
+}
+
+.q-card__section--vert {
+  padding: 0px !important;
 }
 
 .q-item {

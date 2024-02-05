@@ -125,8 +125,8 @@ function logout() {
           :width="270"
           show-if-above
           bordered
-          :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
         >
+          <!-- :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'" -->
           <q-scroll-area class="fit">
             <q-list>
               <LayoutsDrawer v-for="link in menuList" :key="link.title" v-bind="link" />
