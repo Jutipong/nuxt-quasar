@@ -135,7 +135,7 @@ function logout() {
         </q-drawer>
 
         <q-page-container>
-          <q-page padding>
+          <q-page padding class="bg-grey-2">
             <slot />
           </q-page>
         </q-page-container>
