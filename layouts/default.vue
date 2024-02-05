@@ -1,9 +1,10 @@
 <script setup lang="ts">
 const $q = useQuasar()
-const leftDrawerOpen = ref(false)
+const isDrawerOpen = ref(true)
+const route = useRouter()
 
 function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+  isDrawerOpen.value = !isDrawerOpen.value
 }
 
 const isActive = ref('')
@@ -12,42 +13,24 @@ const menuList = [
   {
     icon: 'inbox',
     label: 'Inbox',
+    to: '/',
     separator: true,
   },
   {
     icon: 'send',
     label: 'Outbox',
+    to: '/outbox',
     separator: false,
-  },
-  {
-    icon: 'delete',
-    label: 'Trash',
-    separator: false,
-  },
-  {
-    icon: 'error',
-    label: 'Spam',
-    separator: true,
   },
   {
     icon: 'settings',
     label: 'Settings',
-    separator: false,
-  },
-  {
-    icon: 'feedback',
-    label: 'Send Feedback',
-    separator: false,
-  },
-  {
-    icon: 'help',
-    iconColor: 'primary',
-    label: 'Help',
+    to: '/setting',
     separator: false,
   },
 ]
 
-const icon = computed(() => leftDrawerOpen.value ? 'mdi-menu-open' : 'mdi-menu-close')
+const iconDrawerOpen = computed(() => isDrawerOpen.value ? 'mdi-menu-open' : 'mdi-menu-close')
 
 function logout() {
   $q.dialog({
@@ -70,13 +53,13 @@ function logout() {
       <q-layout view="hhh LpR fFf">
         <q-header reveal class="bg-primary text-white">
           <q-toolbar>
-            <q-btn dense flat round :icon="icon" @click="toggleLeftDrawer" />
+            <q-btn dense flat round :icon="iconDrawerOpen" @click="toggleLeftDrawer" />
 
             <q-toolbar-title>
               <q-avatar>
                 <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
               </q-avatar>
-              Title : {{ isActive }}
+              Title : {{ isActive }} || {{ isDrawerOpen }}
             </q-toolbar-title>
 
             <q-space />
@@ -91,15 +74,15 @@ function logout() {
         <!-- <q-drawer v-model="leftDrawerOpen" show-if-above side="left" bordered>
         </q-drawer> -->
         <q-drawer
-          v-model="leftDrawerOpen"
-          overlay
+          v-model="isDrawerOpen"
+          show-if-above
           bordered
           :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
         >
           <q-scroll-area class="fit">
             <q-list>
               <template v-for="(menuItem, index) in menuList" :key="index">
-                <q-item v-ripple clickable :active="menuItem.label === 'Outbox'">
+                <q-item v-ripple :to="menuItem.to" :active="menuItem.label === route.currentRoute.value.path">
                   <q-item-section avatar>
                     <q-icon :name="`mdi-${menuItem.icon}`" />
                   </q-item-section>
