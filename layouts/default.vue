@@ -98,7 +98,7 @@ function logout() {
               <q-avatar>
                 <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
               </q-avatar>
-              Title : {{ isActive }} || {{ route.currentRoute.value.path }}
+              <!-- Title -->
             </q-toolbar-title>
 
             <q-space />
